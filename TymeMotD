@@ -1396,6 +1396,7 @@ EOF
 }
 
 # shellcheck disable=SC2154,SC2034
+GenerateTymeprod () {
 WriteLog Verbose Info "Generating Tymeprod Theme"
 f=3 b=4
 for j in f b; do
@@ -2219,9 +2220,6 @@ InstallTymeMotD () {
   WriteLog Verbose Info "Creating reference directory"
   mkdir -p /usr/share/TymeMotD/references
   WriteLog Verbose Info "Downloading themes"
-  curl -s https://raw.githubusercontent.com/OutsideIT/TymeMotD/dev-willem-installer/TymeMotD-theme-Elastic.json -o /usr/share/TymeMotD/themes/TymeMotD-theme-Elastic.json
-  curl -s https://raw.githubusercontent.com/OutsideIT/TymeMotD/dev-willem-installer/TymeMotD-theme-Eline.json -o /usr/share/TymeMotD/themes/TymeMotD-theme-Eline.json
-  curl -s https://raw.githubusercontent.com/OutsideIT/TymeMotD/dev-willem-installer/TymeMotD-theme-Digipolis.json -o /usr/share/TymeMotD/themes/TymeMotD-theme-Digipolis.json
   /usr/local/bin/TymeMotD -S
 }
 
