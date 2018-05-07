@@ -1396,8 +1396,8 @@ EOF
 }
 
 # shellcheck disable=SC2154,SC2034
-GenerateInvader () {
-    WriteLog Verbose Info "Generating Invader Theme"
+GenerateTymeprod () {
+    WriteLog Verbose Info "Generating TymeProd Theme"
     f=3 b=4
     for j in f b; do
         for i in {0..7}; do
@@ -1406,46 +1406,139 @@ GenerateInvader () {
     done
     bld=$'\e[1m'
     rst=$'\e[0m'
+    lgr=$'\e[38;5;248m'
+    dgr=$'\e[38;5;243m'
     HostName=$(jq -r ".HostName.Value" $ExportFile)
-cat << EOF
- $f1  ▀▄   ▄▀     $f2 ▄▄▄████▄▄▄    $f3  ▄██▄     $f4  ▀▄   ▄▀     $f5 ▄▄▄████▄▄▄    $f6  ▄██▄  $rst
- $f1 ▄█▀███▀█▄    $f2███▀▀██▀▀███   $f3▄█▀██▀█▄   $f4 ▄█▀███▀█▄    $f5███▀▀██▀▀███   $f6▄█▀██▀█▄$rst
- $f1█▀███████▀█   $f2▀▀███▀▀███▀▀   $f3▀█▀██▀█▀   $f4█▀███████▀█   $f5▀▀███▀▀███▀▀   $f6▀█▀██▀█▀$rst
- $f1▀ ▀▄▄ ▄▄▀ ▀   $f2 ▀█▄ ▀▀ ▄█▀    $f3▀▄    ▄▀   $f4▀ ▀▄▄ ▄▄▀ ▀   $f5 ▀█▄ ▀▀ ▄█▀    $f6▀▄    ▄▀$rst
-EOF
-HostName=$(jq -r ".HostName.Value" $ExportFile)
-echo -e " $f2 Hostname: $HostName"
-HostIp=$(jq -r ".HostIp.Value" $ExportFile)
-echo -e " $f3 Ip: $HostIp"
-Release=$(jq -r ".Release.Value" $ExportFile)
-echo -e " $f4 Os: $Release"
-Kernel=$(jq -r ".Kernel.Value" $ExportFile)
-echo -e " $f5 Kernel: $Kernel"
-Platform=$(jq -r ".Platform.Value" $ExportFile)
-echo -e " $f6 Platform: $Platform"
-cat << EOF
- $bld$f1▄ ▀▄   ▄▀ ▄   $f2 ▄▄▄████▄▄▄    $f3  ▄██▄     $f4▄ ▀▄   ▄▀ ▄   $f5 ▄▄▄████▄▄▄    $f6  ▄██▄  $rst
- $bld$f1█▄█▀███▀█▄█   $f2███▀▀██▀▀███   $f3▄█▀██▀█▄   $f4█▄█▀███▀█▄█   $f5███▀▀██▀▀███   $f6▄█▀██▀█▄$rst
- $bld$f1▀█████████▀   $f2▀▀▀██▀▀██▀▀▀   $f3▀▀█▀▀█▀▀   $f4▀█████████▀   $f5▀▀▀██▀▀██▀▀▀   $f6▀▀█▀▀█▀▀$rst
- $bld$f1 ▄▀     ▀▄    $f2▄▄▀▀ ▀▀ ▀▀▄▄   $f3▄▀▄▀▀▄▀▄   $f4 ▄▀     ▀▄    $f5▄▄▀▀ ▀▀ ▀▀▄▄   $f6▄▀▄▀▀▄▀▄$rst
-EOF
-UptimeDays=$(jq -r ".Uptime.Days" $ExportFile)
-UptimeHours=$(jq -r ".Uptime.Hours" $ExportFile)
-UptimeMinutes=$(jq -r ".Uptime.Minutes" $ExportFile)
-UptimeSeconds=$(jq -r ".Uptime.Seconds" $ExportFile)
-echo -e " $f2 Uptime ${UptimeDays} day(s). ${UptimeHours}:${UptimeMinutes}:${UptimeSeconds}"
-CpuUsageAverage=$(jq -r ".CpuUsage.Average" $ExportFile)
-CpuUsageCpuCount=$(jq -r ".CpuUsage.CpuCount" $ExportFile)
-CpuUsageCoreCount=$(jq -r ".CpuUsage.CoreCount" $ExportFile)
-CpuUsageSocketCount=$(jq -r ".CpuUsage.SocketCount" $ExportFile)
-echo -e " $f3 CPU Usage: ${CpuUsageAverage} % avg over ${VCL}${CpuUsageCpuCount}${VC} cpu(s)  ($CpuUsageCoreCount core(s) x $CpuUsageSocketCount socket(s))"
-CpuLoad=$(jq -r ".CpuLoad.Value" $ExportFile)
-echo -e " $f4 CPU Load: $CpuLoad"
-UpdateCount=$(jq -r ".Updates.Count" $ExportFile)
-UpdateType=$(jq -r ".Updates.Type" $ExportFile)
-echo -e " $f5 Updates: $UpdateCount ${UpdateType} updates available"
-echo -e "$f7$rst"
+cat <<EOF
 
+$f3        ████$f3
+$f3      ████████$f3   $rst
+$f3    ████████████$f3 $dgr  ▒▒▒▒▒▒▒▒
+$f3  █████████████▒▒▒$f3 $dgr   ▒▒                        █▀▀▀▀▀▀▄ ▀        ▀  █        █
+$f3 █████████████▒▒▒▒▒$f3  $dgr ▒▒ ▒   ▒ ▒▒▒▒▒▒▒▒▒ ▒▒▒▒   █      █ █ █▀▀▀▀█ █ ▀█▀ ▀▀▀▀▌ █
+$f3  ██████████▒▒▒▒▒▒ $f3 $dgr  ▒▒ ▒   ▒ ▒   ▒   ▒ ▒  ▒   █      █ █ █    █ █  █  █▀▀ ▌ █
+$f3    ████████▒▒▒▒  $f3 $dgr   ▒▒ ▒▒▒▒▒ ▒   ▒   ▒ ▒▒▒▒▒▒ █      █ █ █    █ █  █  █   ▌ █
+$f3      █████▒▒▒▒  $f3 $dgr           ▒                   ▀▀▀▀▀▀  ▀ ▀▀▀▀▀█ ▀  ▀▀ ▀▀▀▀▀ ▀
+$f3        ██▒▒    $f3  $dgr        ▒▒▒▒                             ▀▄▄▄▄▀
+$rst
+EOF
+echo -e "$BlueScheme$LongBlueScheme$BlueScheme$ShortBlueScheme\e[0;88m"
+
+    ShownVersion=""
+    if [[ "$HideVersion" -eq 1 ]]; then
+        ShownVersion="$CP1$CP1$CP1$CP1$CP1$CP1"
+    else
+        ShownVersion="            -----PRODUCTION ENVIRONMENT-----"
+    fi
+    HostName=$(jq -r ".HostName.Value" $ExportFile)
+    if [[ "$HostName" != "null" ]] && [[ "$HostName" != "" ]] ; then
+        echo -e "$BlueScheme$LongBlueScheme$BlueScheme$ShortBlueScheme
+$BlueScheme \e[38;5;196m $HostName $ShortBlueScheme $Space\e[38;5;196m$SVC$ShownVersion
+$BlueScheme$LongBlueScheme$BlueScheme$ShortBlueScheme"
+    fi
+    HostIp=$(jq -r ".HostIp.Value" $ExportFile)
+    if [[ ! -z $HostIp ]] && [[ "$HostIp" != "null" ]] ; then
+        echo -e "\e[0;38;5;160m$Fto            \e[38;5;39mIp \e[38;5;93m= \e[38;5;33m$HostIp"
+    fi
+    Release=$(jq -r ".Release.Value" $ExportFile)
+    if [[ ! -z $Release ]] && [[ "$Release" != "null" ]] ; then
+        echo -e "\e[0;38;5;160m$Fto       \e[38;5;39mRelease \e[38;5;93m= \e[38;5;27m$Release"
+    fi
+    Kernel=$(jq -r ".Kernel.Value" $ExportFile)
+    if [[ ! -z $Kernel ]] && [[ "$Kernel" != "null" ]] ; then
+        echo -e "\e[0;38;5;160m$Fto        \e[38;5;39mKernel \e[38;5;93m= \e[38;5;27m$Kernel"
+    fi
+    Platform=$(jq -r ".Platform.Value" $ExportFile)
+    if [[ ! -z $Platform ]] && [[ "$Platform" != "null" ]] ; then
+        echo -e "\e[0;38;5;160m$Fto      \e[38;5;39mPlatform \e[38;5;93m= \e[38;5;27m$Platform"
+    fi
+    UptimeDays=$(jq -r ".Uptime.Days" $ExportFile)
+    UptimeHours=$(jq -r ".Uptime.Hours" $ExportFile)
+    UptimeMinutes=$(jq -r ".Uptime.Minutes" $ExportFile)
+    UptimeSeconds=$(jq -r ".Uptime.Seconds" $ExportFile)
+    if [[ ! -z $UptimeDays ]] && [[ "$UptimeDays" != "null" ]] ; then
+        echo -e "\e[0;38;5;160m$Fto        \e[38;5;39mUptime \e[38;5;93m= \e[38;5;33m${UptimeDays} \e[38;5;27mday(s). \e[38;5;33m${UptimeHours}\e[38;5;27m:\e[38;5;33m${UptimeMinutes}\e[38;5;27m:\e[38;5;33m${UptimeSeconds}"
+    fi
+    InstallDate=$(jq -r ".InstallDate.Value" $ExportFile)
+    if [[ ! -z $InstallDate ]] && [[ "$InstallDate" != "null" ]] ; then
+        echo -e "\e[0;38;5;160m$Fto     \e[38;5;39mInstalled \e[38;5;93m= \e[38;5;27m$InstallDate"
+    fi
+    CpuUsageAverage=$(jq -r ".CpuUsage.Average" $ExportFile)
+    CpuUsageCpuCount=$(jq -r ".CpuUsage.CpuCount" $ExportFile)
+    CpuUsageCoreCount=$(jq -r ".CpuUsage.CoreCount" $ExportFile)
+    CpuUsageSocketCount=$(jq -r ".CpuUsage.SocketCount" $ExportFile)
+    if [[ ! -z $CpuUsageAverage ]] && [[ "$CpuUsageAverage" != "null" ]] ; then
+        echo -e "\e[0;38;5;160m$Fto     \e[38;5;39mCPU Usage \e[38;5;93m= \e[38;5;33m${CpuUsageAverage}\e[38;5;27m% avg over \e[38;5;33m$CpuUsageCpuCount \e[38;5;27mcpu(s) ($CpuUsageCoreCount core(s) x $CpuUsageSocketCount socket(s))"
+    fi
+    CpuLoad=$(jq -r ".CpuLoad.Value" $ExportFile)
+    if [[ ! -z $CpuLoad ]] && [[ "$CpuLoad" != "null" ]] ; then
+        echo -e "\e[0;38;5;160m$Fto      \e[38;5;39mCPU Load \e[38;5;93m= \e[38;5;27m$CpuLoad"
+    fi
+    MemTotalGB=$(jq -r ".Memory.TotalGB" $ExportFile)
+    MemFreeGB=$(jq -r ".Memory.FreeGB" $ExportFile)
+    MemUsedGB=$(jq -r ".Memory.UsedGB" $ExportFile)
+    MemFreePerc=$(jq -r ".Memory.FreePerc" $ExportFile)
+    MemUsedPerc=$(jq -r ".Memory.UsedPerc" $ExportFile)
+    if [[ ! -z $MemTotalGB ]] && [[ "$MemTotalGB" != "null" ]] ; then
+        echo -e "\e[0;38;5;160m$Fto        \e[38;5;39mMemory \e[38;5;93m= \e[38;5;27mFree: \e[38;5;33m${MemFreeGB}\e[38;5;27mGB (\e[38;5;33m${MemFreePerc}\e[38;5;27m%), Used: \e[38;5;33m${MemUsedGB}\e[38;5;27mGB (\e[38;5;33m${MemUsedPerc}\e[38;5;27m%), Total: \e[38;5;33m${MemTotalGB}\e[38;5;27mGB"
+    fi
+    SwapTotalGB=$(jq -r ".Swap.TotalGB" $ExportFile)
+    SwapFreeGB=$(jq -r ".Swap.FreeGB" $ExportFile)
+    SwapUsedGB=$(jq -r ".Swap.UsedGB" $ExportFile)
+    SwapFreePerc=$(jq -r ".Swap.FreePerc" $ExportFile)
+    SwapUsedPerc=$(jq -r ".Swap.UsedPerc" $ExportFile)
+    if [[ ! -z $SwapTotalGB ]] && [[ "$SwapTotalGB" != "null" ]] ; then
+        echo -e "\e[0;38;5;160m$Fto          \e[38;5;39mSwap \e[38;5;93m= \e[38;5;27mFree: \e[38;5;33m${SwapFreeGB}\e[38;5;27mGB (\e[38;5;33m$SwapFreePerc\e[38;5;27m%), Used: \e[38;5;33m${SwapUsedGB}\e[38;5;27mGB (\e[38;5;33m$SwapUsedPerc\e[38;5;27m%), Total: \e[38;5;33m${SwapTotalGB}\e[38;5;27mGB"
+    fi
+    DiskRootTotalGB=$(jq -r ".DiskRoot.TotalGB" $ExportFile)
+    DiskRootFreeGB=$(jq -r ".DiskRoot.FreeGB" $ExportFile)
+    DiskRootUsedGB=$(jq -r ".DiskRoot.UsedGB" $ExportFile)
+    DiskRootFreePerc=$(jq -r ".DiskRoot.FreePerc" $ExportFile)
+    DiskRootUsedPerc=$(jq -r ".DiskRoot.UsedPerc" $ExportFile)
+    if [[ ! -z $DiskRootTotalGB ]] && [[ "$DiskRootTotalGB" != "null" ]] ; then
+        echo -e "\e[0;38;5;160m$Fto          \e[38;5;39mRoot \e[38;5;93m= \e[38;5;27mFree: \e[38;5;33m${DiskRootFreeGB}\e[38;5;27mGB (\e[38;5;33m$DiskRootFreePerc\e[38;5;27m%), Used: \e[38;5;33m${DiskRootUsedGB}\e[38;5;27mGB (\e[38;5;33m$DiskRootUsedPerc\e[38;5;27m%), Total: \e[38;5;33m${DiskRootTotalGB}\e[38;5;27mGB"
+    fi
+    UpdateCount=$(jq -r ".Updates.Count" $ExportFile)
+    UpdateType=$(jq -r ".Updates.Type" $ExportFile)
+    if [[ ! -z $UpdateCount ]] && [[ "$UpdateCount" != "null" ]] ; then
+        echo -e "\e[0;38;5;160m$Fto       \e[38;5;39mUpdates \e[38;5;93m= \e[38;5;33m$UpdateCount\e[38;5;27m ${UpdateType} updates available"
+    fi
+    SessionCount=$(jq -r ".Sessions.Count" $ExportFile)
+    if [[ ! -z $SessionCount ]] && [[ "$SessionCount" != "null" ]] ; then
+        echo -e "\e[0;38;5;160m$Fto      \e[38;5;39mSessions \e[38;5;93m= \e[38;5;33m$SessionCount\e[38;5;27m"
+    fi
+    ProcessCount=$(jq -r ".Processes.Count" $ExportFile)
+    ProcessMax=$(jq -r ".Processes.Max" $ExportFile)
+    if [[ ! -z $ProcessCount ]] && [[ "$ProcessCount" != "null" ]] ; then
+        echo -e "\e[0;38;5;160m$Fto     \e[38;5;39mProcesses \e[38;5;93m= \e[38;5;33m$ProcessCount\e[38;5;27m running processes of \e[38;5;33m$ProcessMax\e[38;5;27m maximum processes"
+    fi
+    HttpdVersion=$(jq -r ".Httpd.Version" $ExportFile)
+    if [[ ! -z $HttpdVersion ]] && [[ "$HttpdVersion" != "null" ]] ; then
+        echo -e "\e[0;38;5;160m$Fto        \e[38;5;39mApache \e[38;5;93m= \e[38;5;27mVersion: \e[38;5;33m$HttpdVersion"
+    fi
+    NginxVersion=$(jq -r ".Nginx.Version" $ExportFile)
+    if [[ ! -z $NginxVersion ]] && [[ "$NginxVersion" != "null" ]] ; then
+        echo -e "\e[0;38;5;160m$Fto         \e[38;5;39mnginx \e[38;5;93m= \e[38;5;27mVersion: \e[38;5;33m$NginxVersion"
+    fi
+    MysqlVersion=$(jq -r ".Mysql.Version" $ExportFile)
+    MysqlDistribution=$(jq -r ".Mysql.Distribution" $ExportFile)
+    if [[ ! -z $MysqlVersion ]] && [[ "$MysqlVersion" != "null" ]] ; then
+        echo -e "\e[0;38;5;160m$Fto         \e[38;5;39mMySQL \e[38;5;93m= \e[38;5;27mVersion: \e[38;5;33m$MysqlVersion \e[38;5;27mDistribution: \e[38;5;33m$MysqlDistribution"
+    fi
+    PostgresVersion=$(jq -r ".Postgres.Version" $ExportFile)
+    if [[ ! -z $PostgresVersion ]] && [[ "$PostgresVersion" != "null" ]] ; then
+        echo -e "\e[0;38;5;160m$Fto    \e[38;5;39mPostgreSQL \e[38;5;93m= \e[38;5;27mVersion: \e[38;5;33m$PostgresVersion"
+    fi
+    PhpVersion=$(jq -r ".Php.Version" $ExportFile)
+    PhpMaxMemory=$(jq -r ".Php.MaxMemory" $ExportFile)
+    if [[ ! -z $PhpVersion ]] && [[ "$PhpVersion" != "null" ]] ; then
+        echo -e "\e[0;38;5;160m$Fto           \e[38;5;39mPHP \e[38;5;93m= \e[38;5;27mVersion: \e[38;5;33m$PhpVersion, \e[38;5;27mMemory Limit: \e[38;5;33m$PhpMaxMemory"
+    fi
+    ElasticsearchVersion=$(jq -r ".Elasticsearch.Version" $ExportFile)
+    if [[ ! -z $ElasticsearchVersion ]] && [[ "$ElasticsearchVersion" != "Unknown" ]] && [[ "$ElasticsearchVersion" != "null" ]] ; then
+        echo -e "\e[0;38;5;160m$Fto \e[38;5;39mElasticsearch \e[38;5;93m= \e[38;5;27mVersion: \e[38;5;33m$ElasticsearchVersion"
+    fi
+    echo -e "$BlueScheme$LongBlueScheme$BlueScheme$ShortBlueScheme\e[0;88m"
 }
 
 PrintHelp () {
